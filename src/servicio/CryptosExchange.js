@@ -67,7 +67,6 @@ async function consultarPreciosPorCantidad (cantidad_cryptos, tipo_moneda) {
   }
 }
 
-<<<<<<< HEAD
 async function consultarPrecioPorNombre (nombre, tipo_moneda) {
   let precioCrypto =  {
     nombre: '',
@@ -97,39 +96,6 @@ async function consultarPrecioPorNombre (nombre, tipo_moneda) {
           precioCrypto.nombre = precio.name
           precioCrypto.valor = (tipo_moneda === 'USD') ? formatterUSD.format(valor) : formatterPeso.format(valor)
           break   
-=======
-endpoints.get('/precio/:nombre/:tipo_moneda', async(req, res)=> {
-    let { nombre, tipo_moneda } = req.params
-    let precioCrypto =  {
-      nombre: '',
-      valor: 0
-    }
-    let precioDolarColombia = 0
-    const formatterUSD = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0
-    })
-    const formatterPeso = new Intl.NumberFormat('es-CO', {
-      style: 'currency',
-      currency: 'COP',
-      minimumFractionDigits: 0
-    })
-    try {
-      if (tipo_moneda === 'COP') {
-        let precioDolarConsultadoAPI = await consultarPrecioDolarColombia()
-        precioDolarColombia = (precioDolarConsultadoAPI > 0) ? precioDolarConsultadoAPI : 3800
-      }
-      let responsePrecios = await axios.get(config.api_exchange)
-      if (responsePrecios && responsePrecios.data.length > 0) {
-        for (let precio of responsePrecios.data) {
-          if (precio.name === nombre) {
-            let valor = (tipo_moneda === 'USD') ? precio.current_price : (precio.current_price * precioDolarColombia)
-            precioCrypto.nombre = precio.name
-            precioCrypto.valor = (tipo_moneda === 'USD') ? formatterUSD.format(valor) : formatterPeso.format(valor)
-            break   
-          }
->>>>>>> 102d420a9746bb7153d0d4cebf4cfb32efa500a8
         }
       }
     }
