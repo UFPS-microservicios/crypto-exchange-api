@@ -12,6 +12,7 @@
   "dependencies": {
     "@google-cloud/pubsub": "^2.19.4",
     "axios": "^0.26.1",
+    "coingecko-api": "^1.0.10",
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "morgan": "^1.10.0",

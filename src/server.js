@@ -15,7 +15,7 @@ app.use(express.urlencoded({extended:true}));
 /**
  * Servicios o rutas
  */
-const valorCrypto = require('./servicio/CryptosExchange')
+const valorCrypto = require('./servicio/Cryptos')
 
 app.use('/', valorCrypto)
 
